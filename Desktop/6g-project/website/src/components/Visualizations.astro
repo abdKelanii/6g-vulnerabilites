@@ -37,9 +37,10 @@ const charts = [
     id: "network-dynamic",
     title: "Dynamic Network Visualization",
     cell: "Cell 14",
-    desc: "A snapshot from the dynamic visualization where the jammer and eavesdropper positions change randomly each step, simulating real-world mobile adversaries. The DQN agent continuously adjusts its beamforming strategy in response to these movements.",
-    src: "/charts/network-dynamic.png",
-    alt: "Dynamic 6G Security Environment — mobile adversary simulation",
+    desc: "Animated simulation showing the jammer and eavesdropper positions shifting randomly each step, simulating real-world mobile adversaries. The DQN agent continuously adjusts its beamforming strategy in response to these movements.",
+    src: "/charts/network-dynamic.gif",
+    alt: "Dynamic 6G Security Environment — animated mobile adversary simulation",
+    animated: true,
   },
 ];
 ---
@@ -79,6 +80,7 @@ const charts = [
             <h3 class="chart-title-sm">{c.title}</h3>
           </div>
           <div class="img-wrap">
+            {c.animated && <span class="gif-badge mono">GIF</span>}
             <img src={c.src} alt={c.alt} class="chart-img" loading="lazy" />
           </div>
           <p class="chart-desc-sm">{c.desc}</p>
@@ -176,6 +178,21 @@ const charts = [
     margin-bottom: 1rem;
     cursor: zoom-in;
     transition: border-color 0.2s;
+    position: relative;
+  }
+
+  .gif-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+    background: rgba(0,212,255,0.15);
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
   }
 
   .img-wrap:hover { border-color: rgba(0,212,255,0.4); }
